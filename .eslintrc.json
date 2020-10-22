@@ -24,6 +24,8 @@
   },
   "plugins": ["prettier", "react-hooks", "react", "@typescript-eslint"],
   "rules": {
+    "operator-linebreak": "off",
+    "implicit-arrow-linebreak": "off",
     "arrow-parens": "off",
     "react/prop-types": "off",
     "prettier/prettier": "error",

@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-  grid-area: HD;
+  align-items: center;
   background-color: ${props => props.theme.colors.secondary};
   border-bottom: 1px solid ${props => props.theme.colors.gray};
-  padding: 0 30px;
-
   display: flex;
-  align-items: center;
+  padding: 0 30px;
   justify-content: space-between;
+  grid-area: HD;
 `;
 
 export const Profiel = styled.div`

@@ -19,11 +19,11 @@ const Aside: React.FC = () => (
         <RiDashboardFill />
         Dashboard
       </Link>
-      <Link to="/list">
+      <Link to="/list/entry-balance">
         <FiArrowUp />
         Entradas
       </Link>
-      <Link to="/list">
+      <Link to="/list/exit-balance">
         <FiArrowDown />
         Saídas
       </Link>
