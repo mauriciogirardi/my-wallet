@@ -29,7 +29,7 @@ export const Container = styled.div<IContainerProps>`
     z-index: auto;
   }
 
-  div {
+  > div {
     span {
       font-size: 28px;
       font-weight: 500;
@@ -41,7 +41,8 @@ export const Container = styled.div<IContainerProps>`
     }
   }
 
-  small {
+  > small {
     color: #fff;
+    z-index: 1000;
   }
 `;

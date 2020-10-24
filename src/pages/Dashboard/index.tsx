@@ -4,7 +4,10 @@ import ContentHeader from '../../components/ContentHeader';
 import Select from '../../components/Select';
 import WalletBox from '../../components/WalletBox';
 import MessageBox from '../../components/Message';
-import PieChartCard from '../../components/PieChartBox';
+
+import PieChartBox from '../../components/Graphics/PieChartBox';
+import HistoryBox from '../../components/Graphics/HistoryBox';
+import BarChartBox from '../../components/Graphics/BarChartBox';
 
 import listOfMonths from '../../utils/months';
 
@@ -158,6 +161,126 @@ const Dashboard: React.FC = () => {
     return reportData;
   }, [totalEntryBalance, totalExitBalance]);
 
+  const historyGraphics = useMemo(
+    () =>
+      listOfMonths.map((_, indexMonth) => {
+        let amountEntry = 0;
+
+        gains.forEach(gain => {
+          const date = new Date(gain.date);
+          const gainMonth = date.getMonth();
+          const gainYear = date.getFullYear();
+
+          if (gainMonth === indexMonth && gainYear === yearSelected) {
+            amountEntry += Number(gain.amount);
+          }
+        });
+
+        let amountExit = 0;
+
+        expenses.forEach(expense => {
+          const date = new Date(expense.date);
+          const expenseMonth = date.getMonth();
+          const expenseYear = date.getFullYear();
+
+          if (expenseMonth === indexMonth && expenseYear === yearSelected) {
+            amountExit += Number(expense.amount);
+          }
+        });
+
+        return {
+          monthNumber: indexMonth,
+          month: listOfMonths[indexMonth].substr(0, 3),
+          amountEntry,
+          amountExit,
+        };
+      }),
+
+    [yearSelected],
+  );
+
+  const relationExpensevesRecorrentAndEventual = useMemo(() => {
+    let amountRecurrent = 0;
+    let amountEventual = 0;
+
+    expenses
+      .filter(expense => {
+        const date = new Date(expense.date);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+
+        return month === monthSelected && year === yearSelected;
+      })
+      .forEach(expense => {
+        if (expense.frequency === 'recorrente') {
+          amountRecurrent += Number(expense.amount);
+        }
+
+        if (expense.frequency === 'eventual') {
+          amountEventual += Number(expense.amount);
+        }
+      });
+
+    const total = amountRecurrent + amountEventual;
+
+    return [
+      {
+        name: 'Recorrentes',
+        total: amountRecurrent,
+        color: '#4E41F0',
+        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+      },
+
+      {
+        name: 'Eventuais',
+        total: amountEventual,
+        color: '#E44C4E',
+        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+      },
+    ];
+  }, [monthSelected, yearSelected]);
+
+  const relationGainsRecorrentAndEventual = useMemo(() => {
+    let amountRecurrent = 0;
+    let amountEventual = 0;
+
+    gains
+      .filter(gain => {
+        const date = new Date(gain.date);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+
+        return month === monthSelected && year === yearSelected;
+      })
+      .forEach(gain => {
+        if (gain.frequency === 'recorrente') {
+          amountRecurrent += Number(gain.amount);
+        }
+
+        if (gain.frequency === 'eventual') {
+          amountEventual += Number(gain.amount);
+        }
+      });
+
+    const total = amountRecurrent + amountEventual;
+
+    return [
+      {
+        name: 'Recorrentes',
+        total: amountRecurrent,
+        color: '#4E41F0',
+        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+      },
+
+      {
+        name: 'Eventual',
+        total: amountEventual,
+        color: '#E44C4E',
+        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+      },
+    ];
+  }, [monthSelected, yearSelected]);
+
   return (
     <Containet>
       <ContentHeader title="Dashboard" lineColor="#F7931B">
@@ -205,7 +328,22 @@ const Dashboard: React.FC = () => {
           footertext={message.footertext}
         />
 
-        <PieChartCard reportData={relationEntryBalanceAndExitBalance} />
+        <PieChartBox reportData={relationEntryBalanceAndExitBalance} />
+
+        <HistoryBox
+          data={historyGraphics}
+          lineColorAmountEntry="#F7931B"
+          lineColorAmountExit="#E44C4E"
+        />
+
+        <BarChartBox
+          data={relationExpensevesRecorrentAndEventual}
+          title="Saídas"
+        />
+        <BarChartBox
+          data={relationGainsRecorrentAndEventual}
+          title="Entradas"
+        />
       </Content>
     </Containet>
   );
