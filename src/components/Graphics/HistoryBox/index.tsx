@@ -46,7 +46,7 @@ const HistoryBox: React.FC<IHistoryBox> = ({
           dataKey="amountEntry"
           name="Entradas"
           stroke={lineColorAmountEntry}
-          strokeWidth={5}
+          strokeWidth={2}
           dot={{ r: 5 }}
           activeDot={{ r: 8 }}
         />
@@ -56,7 +56,7 @@ const HistoryBox: React.FC<IHistoryBox> = ({
           dataKey="amountExit"
           name="Saída"
           stroke={lineColorAmountExit}
-          strokeWidth={5}
+          strokeWidth={2}
           dot={{ r: 5 }}
           activeDot={{ r: 8 }}
         />

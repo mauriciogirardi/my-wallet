@@ -18,6 +18,6 @@ export const Container = styled.main`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.colors.secondary};
+    background-color: ${props => props.theme.colors.primary};
   }
 `;

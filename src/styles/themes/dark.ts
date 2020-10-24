@@ -7,6 +7,7 @@ export default {
     tertiary: '#3E3B47',
 
     inputBackground: '#232129',
+    colorMenu: '#F7931B',
 
     white: '#FFF',
     black: '#000',

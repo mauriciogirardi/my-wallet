@@ -10,6 +10,7 @@ declare module 'styled-components' {
       tertiary: string;
 
       inputBackground: string;
+      colorMenu: string;
 
       white: string;
       black: string;

@@ -17,10 +17,10 @@ export const Filters = styled.main`
   }
 
   > button {
-    background-color: ${props => props.theme.colors.success};
+    background-color: #4e41f0;
     border: 0;
     border-radius: 5px;
-    color: ${props => props.theme.colors.white};
+    color: #fff;
     font-size: 18px;
     font-weight: 500;
     opacity: 40%;
@@ -29,7 +29,7 @@ export const Filters = styled.main`
 
     & + button {
       margin-left: 25px;
-      background-color: ${props => props.theme.colors.warning};
+      background-color: #e44c4e;
     }
   }
 `;

@@ -25,7 +25,7 @@ export const MenuContainet = styled.nav`
 
   a {
     align-items: center;
-    color: ${props => props.theme.colors.info};
+    color: ${props => props.theme.colors.colorMenu};
     display: block;
     display: flex;
     font-size: 18px;
