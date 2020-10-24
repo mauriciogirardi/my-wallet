@@ -18,7 +18,7 @@ export const Title = styled.h1<ITitleProps>`
   span {
     background-color: ${props => props.lineColor};
     display: block;
-    width: 50px;
+    width: 50%;
     height: 5px;
   }
 `;

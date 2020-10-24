@@ -6,6 +6,8 @@ export default {
     secondary: '#312E38',
     tertiary: '#3E3B47',
 
+    inputBackground: '#232129',
+
     white: '#FFF',
     black: '#000',
     gray: '#BFBFBF',

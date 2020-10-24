@@ -9,6 +9,8 @@ declare module 'styled-components' {
       secondary: string;
       tertiary: string;
 
+      inputBackground: string;
+
       white: string;
       black: string;
       gray: string;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 import { RiDashboardFill } from 'react-icons/ri';
 import { BiExit } from 'react-icons/bi';
+import { MdMonetizationOn } from 'react-icons/md';
 
 import logoDarkSvg from '../../assets/logo-dark.svg';
 
@@ -26,6 +27,10 @@ const Aside: React.FC = () => (
       <Link to="/list/exit-balance">
         <FiArrowDown />
         Saídas
+      </Link>
+      <Link to="/register-account">
+        <MdMonetizationOn />
+        Cadastro de contas
       </Link>
       <Link to="/signIn">
         <BiExit />
