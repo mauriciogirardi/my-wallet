@@ -14,6 +14,13 @@ export default [
     date: '2020-01-17',
   },
   {
+    description: 'Freela',
+    amount: '92.62',
+    type: 'entrada',
+    frequency: 'eventual',
+    date: '2020-01-17',
+  },
+  {
     description: 'Salário',
     amount: '2500.23',
     type: 'entrada',

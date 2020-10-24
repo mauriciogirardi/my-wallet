@@ -24,6 +24,8 @@
   },
   "plugins": ["prettier", "react-hooks", "react", "@typescript-eslint"],
   "rules": {
+    "consistent-return": "off",
+    "object-curly-newline": "off",
     "operator-linebreak": "off",
     "implicit-arrow-linebreak": "off",
     "arrow-parens": "off",

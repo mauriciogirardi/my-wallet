@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+`;
 
 export const Filters = styled.main`
   align-items: center;

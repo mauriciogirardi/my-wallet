@@ -6,6 +6,7 @@ export default [
     frequency: 'recorrente',
     date: '2020-01-10',
   },
+
   {
     description: 'Água',
     amount: '75.55',

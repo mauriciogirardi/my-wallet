@@ -41,33 +41,33 @@ const List: React.FC<IListProps> = ({ match }) => {
 
   const [data, setData] = useState<IData[]>([]);
 
-  const [monthSelected, setMonthSelected] = useState<string>(
-    String(new Date().getMonth() + 1),
+  const [monthSelected, setMonthSelected] = useState<number>(
+    new Date().getMonth() + 1,
   );
 
-  const [yearSelected, setYearSelected] = useState<string>(
-    String(new Date().getFullYear()),
+  const [yearSelected, setYearSelected] = useState<number>(
+    new Date().getFullYear(),
   );
 
-  const title = useMemo(
-    () => (type === 'entry-balance' ? 'Entradas' : 'Saídas'),
-    [type],
-  );
-
-  const lineColor = useMemo(
-    () => (type === 'entry-balance' ? '#F7931B' : '#E44C4E'),
-    [type],
-  );
-
-  const filterListData = useMemo(
-    () => (type === 'entry-balance' ? gains : expenses),
-    [type],
-  );
+  const configListPage = useMemo(() => {
+    if (type === 'entry-balance') {
+      return {
+        title: 'Entradas',
+        lineColor: '#4E41F0',
+        typeList: gains,
+      };
+    }
+    return {
+      title: 'Saídas',
+      lineColor: '#E44C4E',
+      typeList: expenses,
+    };
+  }, [type]);
 
   const yearSelect = useMemo(() => {
     const uniqueYears: number[] = [];
 
-    filterListData.forEach(item => {
+    configListPage.typeList.forEach(item => {
       const date = new Date(item.date);
       const year = date.getFullYear();
 
@@ -80,35 +80,26 @@ const List: React.FC<IListProps> = ({ match }) => {
       value: year,
       label: year,
     }));
-  }, [filterListData]);
+  }, [configListPage.typeList]);
 
-  const monthSelect = useMemo(() => {
-    const uniqueMonth: number[] = [];
-
-    filterListData.forEach(item => {
-      const date = new Date(item.date);
-      const month = date.getMonth();
-
-      if (!uniqueMonth.includes(month)) {
-        uniqueMonth.push(month);
-      }
-    });
-
-    return uniqueMonth.map(month => ({
-      value: month + 1,
-      label: listOfMonths[month],
-    }));
-  }, [filterListData]);
+  const monthSelect = useMemo(
+    () =>
+      listOfMonths.map((month, index) => ({
+        value: index + 1,
+        label: month,
+      })),
+    [],
+  );
 
   useEffect(() => {
-    const filterByYearAndMaonth = filterListData.filter(item => {
+    const filterByYearAndMaonth = configListPage.typeList.filter(item => {
       const date = new Date(item.date);
       const month = date.getMonth() + 1;
       const year = date.getFullYear();
 
       return (
-        month === Number(monthSelected) &&
-        year === Number(yearSelected) &&
+        month === monthSelected &&
+        year === yearSelected &&
         selectedFrequency.includes(item.frequency)
       );
     });
@@ -124,7 +115,7 @@ const List: React.FC<IListProps> = ({ match }) => {
     }));
 
     setData(formattedData);
-  }, [filterListData, monthSelected, yearSelected, selectedFrequency]);
+  }, [configListPage.typeList, monthSelected, yearSelected, selectedFrequency]);
 
   const handleFrequencyClick = (frequency: string) => {
     const alreadySelected = selectedFrequency.findIndex(
@@ -141,19 +132,22 @@ const List: React.FC<IListProps> = ({ match }) => {
 
   return (
     <Container>
-      <ContentHeader title={title} lineColor={lineColor}>
+      <ContentHeader
+        title={configListPage.title}
+        lineColor={configListPage.lineColor}
+      >
         <Select
           options={monthSelect}
           defaultValue={monthSelected}
           onChange={e => {
-            setMonthSelected(e.target.value);
+            setMonthSelected(Number(e.target.value));
           }}
         />
         <Select
           options={yearSelect}
           defaultValue={yearSelected}
           onChange={e => {
-            setYearSelected(e.target.value);
+            setYearSelected(Number(e.target.value));
           }}
         />
       </ContentHeader>

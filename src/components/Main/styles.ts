@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   grid-area: CT;
-  padding: 30px 100px;
+  padding: 30px 50px;
   width: 100%;
 
   height: calc(100vh - 70px);
