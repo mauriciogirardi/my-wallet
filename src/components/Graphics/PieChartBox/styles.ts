@@ -1,4 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appearFromLeft = keyframes`
+  from  {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 interface ILegendProps {
   color: string;
@@ -12,6 +24,8 @@ export const Container = styled.div`
   margin: 20px 0;
   overflow: hidden;
   padding: 30px;
+
+  animation: ${appearFromLeft} 1s;
 
   display: flex;
   justify-content: space-between;

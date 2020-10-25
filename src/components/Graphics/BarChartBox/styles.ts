@@ -54,7 +54,6 @@ export const Legend = styled.li<ILegendProps>`
   direction: ltr;
   display: flex;
   align-items: center;
-  margin-left: 10px;
 
   > div {
     background-color: ${props => props.color};
