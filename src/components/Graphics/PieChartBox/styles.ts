@@ -15,6 +15,11 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1148px) {
+    width: 100%;
+    margin-top: 0;
+  }
 `;
 
 export const SideLeft = styled.aside`
@@ -25,12 +30,6 @@ export const SideLeft = styled.aside`
   h3 {
     font-size: 25px;
   }
-`;
-
-export const SideRight = styled.aside`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const LegendContainer = styled.ul`
@@ -56,7 +55,7 @@ export const Legend = styled.li<ILegendProps>`
   direction: ltr;
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 0;
 
   > div {
     background-color: ${props => props.color};
@@ -71,10 +70,19 @@ export const Legend = styled.li<ILegendProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 600px) {
+      width: 40px;
+      font-size: 12px;
+    }
   }
 
   span {
     font-weight: 500;
+
+    @media (max-width: 600px) {
+      font-size: 12px;
+    }
   }
 
   & + li {

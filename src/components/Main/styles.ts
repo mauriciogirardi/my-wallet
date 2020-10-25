@@ -20,4 +20,8 @@ export const Container = styled.main`
   ::-webkit-scrollbar-track {
     background-color: ${props => props.theme.colors.primary};
   }
+
+  @media (max-width: 600px) {
+    padding: 30px 16px;
+  }
 `;

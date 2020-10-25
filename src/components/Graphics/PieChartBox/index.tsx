@@ -1,13 +1,7 @@
 import React from 'react';
-import { PieChart, Pie, Cell } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-import {
-  Container,
-  SideLeft,
-  LegendContainer,
-  Legend,
-  SideRight,
-} from './styles';
+import { Container, SideLeft, LegendContainer, Legend } from './styles';
 
 interface IPieChartCArdProps {
   reportData: {
@@ -32,15 +26,15 @@ const PieChartCard: React.FC<IPieChartCArdProps> = ({ reportData }) => (
       </LegendContainer>
     </SideLeft>
 
-    <SideRight>
-      <PieChart width={230} height={230}>
+    <ResponsiveContainer>
+      <PieChart>
         <Pie data={reportData} dataKey="percent">
           {reportData.map(data => (
             <Cell key={data.name} fill={data.color} />
           ))}
         </Pie>
       </PieChart>
-    </SideRight>
+    </ResponsiveContainer>
   </Container>
 );
 

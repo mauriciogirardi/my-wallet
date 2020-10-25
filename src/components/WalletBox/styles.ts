@@ -45,4 +45,13 @@ export const Container = styled.div<IContainerProps>`
     color: #fff;
     z-index: 1000;
   }
+
+  @media (max-width: 1029px) {
+    width: 100%;
+    z-index: 2;
+
+    & + div {
+      margin-top: 20px;
+    }
+  }
 `;

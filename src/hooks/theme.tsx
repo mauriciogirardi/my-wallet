@@ -4,7 +4,7 @@ import { DefaultTheme } from 'styled-components';
 import dark from '../styles/themes/dark';
 import light from '../styles/themes/light';
 
-import usePersistedState from './usePersistedState';
+import usePersistedState from '../utils/usePersistedState';
 
 interface IThemeContext {
   toggleTheme(): void;

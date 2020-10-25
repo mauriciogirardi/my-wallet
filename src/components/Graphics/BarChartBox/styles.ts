@@ -15,6 +15,14 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1015px) {
+    width: 100%;
+
+    & + div {
+      margin-top: 0;
+    }
+  }
 `;
 
 export const SideLeft = styled.aside`

@@ -1,4 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appearFromLeft = keyframes`
+  from  {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 export const Container = styled.div``;
 
@@ -8,6 +20,8 @@ export const Form = styled.form`
   border-radius: 10px;
   max-width: 500px;
   width: 100%;
+
+  animation: ${appearFromLeft} 1s;
 `;
 
 export const Wrapper = styled.div`
@@ -40,21 +54,17 @@ export const Wrapper = styled.div`
     input[type='number']::-webkit-outer-spin-button {
       -webkit-appearance: none;
     }
+
+    @media (max-width: 600px) {
+      width: 100%;
+
+      & + div {
+        margin-top: 15px;
+      }
+    }
   }
-`;
 
-export const Button = styled.button`
-  width: 100%;
-  height: 45px;
-  margin-top: 30px;
-  border-radius: 5px;
-  color: #fff;
-  background-color: #ff9000;
-  transition: opacity 0.2s;
-  font-size: 18px;
-  font-weight: 700;
-
-  &:hover {
-    opacity: 80%;
+  @media (max-width: 600px) {
+    display: block;
   }
 `;

@@ -8,6 +8,7 @@ export const Container = styled.header`
   padding: 0 30px;
   justify-content: space-between;
   grid-area: HD;
+  position: relative;
 `;
 
 export const Profiel = styled.div`
@@ -20,5 +21,12 @@ export const Profiel = styled.div`
 
   h3 {
     font-weight: 400;
+  }
+
+  @media (max-width: 600px) {
+    position: absolute;
+    right: 30px;
+
+    text-align: right;
   }
 `;

@@ -21,10 +21,6 @@ export const Container = styled.div`
 
       img {
         width: 50px;
-        /* -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1); */
       }
     }
 
@@ -35,5 +31,9 @@ export const Container = styled.div`
 
   span {
     font-weight: 500;
+  }
+
+  @media (max-width: 1148px) {
+    width: 100%;
   }
 `;

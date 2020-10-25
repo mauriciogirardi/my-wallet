@@ -1,16 +1,12 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 
 import { Container } from './styles';
 
-interface IInputProps {
-  name: string;
-  placeholder?: string;
-  type: string;
-}
+type IInputProps = InputHTMLAttributes<HTMLInputElement>;
 
-const Input: React.FC<IInputProps> = ({ name, placeholder, type, ...rest }) => (
+const Input: React.FC<IInputProps> = ({ ...rest }) => (
   <Container>
-    <input name={name} placeholder={placeholder} type={type} {...rest} />
+    <input {...rest} />
   </Container>
 );
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   & + div {
-    margin-top: 15px;
+    margin-top: 5px;
   }
 
   input {
@@ -17,6 +17,7 @@ export const Container = styled.div`
 
     &::placeholder {
       opacity: 60%;
+      font-size: 18px;
     }
   }
 `;

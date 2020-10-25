@@ -3,25 +3,19 @@ import React from 'react';
 import ContentHeader from '../../components/ContentHeader';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
+import Button from '../../components/Button';
 
-import { Container, Form, Wrapper, Button } from './styles';
+import { Container, Form, Wrapper } from './styles';
 
 const options = [
   { value: 'recorrente', label: 'recorrente' },
   { value: 'eventual', label: 'eventual' },
 ];
 
-// interface IRegiterAccountData {
-//   name: string;
-//   type: string;
-//   accountValue: number;
-//   date: string;
-// }
-
 const RegisterAccount: React.FC = () => (
   <Container>
     <ContentHeader title="Cadastro de contas" lineColor="#e95f78" />
-    <Form>
+    <Form onSubmit={() => {}} autoComplete="off">
       <Wrapper>
         <div>
           <span>Nome</span>
@@ -50,7 +44,7 @@ const RegisterAccount: React.FC = () => (
         </div>
       </Wrapper>
 
-      <Button type="button">Cadastrar</Button>
+      <Button type="submit">Cadastrar</Button>
     </Form>
   </Container>
 );
